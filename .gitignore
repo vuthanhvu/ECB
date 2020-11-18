@@ -1,5 +1,5 @@
 /node_modules
-/middleware/index
+# /middleware/index
 
 # dependencies
 /client/node_modules
