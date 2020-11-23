@@ -6,6 +6,9 @@ const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
 const userRouter = require('./routes/userRouter')
+const categoryRouter = require('./routes/categoryRouter')
+const uploadRouter = require('./routes/uploadRouter')
+const productRouter = require('./routes/productRouter')
 
 const app = express()
 app.use(express.json())
@@ -16,6 +19,9 @@ app.use(fileUpload({ useTempFiles: true }))
 
 //Routes
 app.use('/user', userRouter);
+app.use('/api', categoryRouter);
+app.use('/api', uploadRouter);
+app.use('/api', productRouter);
 
 //connect db
 const URI = process.env.MONGODB_URL;
