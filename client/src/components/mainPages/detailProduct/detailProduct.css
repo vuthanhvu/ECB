@@ -1,0 +1,77 @@
+.detail{
+    max-width: 1230px;
+    box-shadow: 0 0 15px #ddd;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px;
+    margin: 0 auto;
+    font-size: 150%;
+}
+.detail img {  
+    max-width: 400px;
+    width: 100%;
+    margin: 20px;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+.box-detail {
+    max-width: 500px;
+    width: 100%;
+    margin: 20px 0;
+}
+.box-detail .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row h2 {
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 1.5em;
+    color: #FF8748;
+    letter-spacing: 2px;
+    font-weight: 2rem;
+    font-size: 1.5rem;
+}
+.row h6{
+    text-transform: uppercase;
+}
+.box-detail span {
+    color: crimson;
+}
+.box-detail p {
+    text-transform: capitalize;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin: 10px 0 ;
+}
+.box-detail .cart {
+    background-color: #7b3994;
+    color: white;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.relate-product{
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.relate-product > h2{  
+    margin: 20px 0 0 0;
+    background-color: #999;
+    display:inline-block;
+    padding: 10px 15px;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
