@@ -12,38 +12,36 @@ import "./header.css";
 export default function Header() {
     const value = useContext(GlobalState);
     return (
-        <div className="container">
-            <header>
-                <div className="menu">
-                    <img src={Menu} alt="" width="30" />
-                </div>
+        <header>
+            <div className="menu">
+                <img src={Menu} alt="" width="30" />
+            </div>
 
-                <div className="logo">
-                    <h1>
-                        <Link to="/products"> VTP Shop</Link>
-                    </h1>
-                </div>
+            <div className="logo">
+                <h1>
+                    <Link to="/products"> VTP Shop</Link>
+                </h1>
+            </div>
 
-                <ul>
-                    <li>
-                        <Link to="/products">Products</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Login ❈ Register</Link>
-                    </li>
-                    <li>
-                        <div className="menu">
-                            <img src={Close} alt="" width="30" />
-                        </div>
-                    </li>
-                </ul>
-                <div className="cart-icon">
-                    <span>0</span>
-                    <Link to="/carts">
-                        <img src={CartIcon} alt="" width="30" />
-                    </Link>
-                </div>
-            </header>
-        </div>
+            <ul>
+                <li>
+                    <Link to="/products">Products</Link>
+                </li>
+                <li>
+                    <Link to="/login">Login ❈ Register</Link>
+                </li>
+                <li>
+                    <div className="menu">
+                        <img src={Close} alt="" width="30" />
+                    </div>
+                </li>
+            </ul>
+            <div className="cart-icon">
+                <span>0</span>
+                <Link to="/carts">
+                    <img src={CartIcon} alt="" width="25" />
+                </Link>
+            </div>
+        </header>
     );
 }

@@ -1,13 +1,11 @@
-.container {
+/* .container {
     background-color: #ddd;
     position: sticky;
     top:0;
     z-index: 1;
-}
+} */
 header{
     width: 100%;
-    max-width: 1230px;
-    margin: 0 auto;
     min-height: 70px;
     overflow: hidden;
     display: flex;
@@ -15,6 +13,12 @@ header{
     justify-content: space-around;
     align-items: center;
     vertical-align: center;
+    background-color: #ddd;
+    padding: 0 10px;
+    /* margin-bottom: 30px; */
+    position: sticky;
+    top:0;
+    z-index: 1;
 }
 
 header .logo{
@@ -28,7 +32,9 @@ header a{
     letter-spacing: 2px;
     color: #555;
 }
-
+header ul{
+    /* text-align: center; */
+}
 header ul li {
     display: inline-block;
     padding: 20px;

@@ -1,12 +1,10 @@
 .detail{
-    max-width: 1230px;
     box-shadow: 0 0 15px #ddd;
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 50px;
-    margin: 0 auto;
     font-size: 150%;
 }
 .detail img {  
@@ -17,10 +15,12 @@
     object-fit: cover;
     display: block;
     cursor: pointer;
+    padding: 10px;
+    box-shadow:  0 0 5px #ddd;
 }
 
 .box-detail {
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     margin: 20px 0;
 }
@@ -33,23 +33,25 @@
 .row h2 {
     text-transform: uppercase;
     white-space: nowrap;
-    font-size: 1.5em;
     color: #FF8748;
     letter-spacing: 2px;
     font-weight: 2rem;
-    font-size: 1.5rem;
+    /* font-size: 2rem; */
 }
 .row h6{
     text-transform: uppercase;
 }
 .box-detail span {
+    display: inline-block;
+    margin-top: 30px;
     color: crimson;
 }
 .box-detail p {
     text-transform: capitalize;
     line-height: 1.5;
+    font-size: 1rem;
     opacity: 0.8;
-    margin: 10px 0 ;
+    margin: 10px 0;
 }
 .box-detail .cart {
     background-color: #7b3994;
