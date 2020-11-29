@@ -33,11 +33,11 @@ export default function Login() {
             <h2>Login</h2>
             <form onSubmit={loginSubmit}>
                 <label name="email">Email</label>
-                <input type="email" name="email" require 
+                <input type="email" name="email" required
                 placeholder="Email" value={user.email} onChange={onChangeInput}/>
 
                 <label name="email">Password</label>
-                <input type="password" name="password" require
+                <input type="password" name="password" required
                 placeholder="Password" value={user.password} onChange={onChangeInput}/>
 
                 <div className="row">

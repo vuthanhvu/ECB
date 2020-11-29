@@ -6,6 +6,7 @@ function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [cart, setCart] = useState([]);
+    const [history, setHistory] = useState([])
 
     const addCart = async (product) => {
         if (!isLogged) return alert("Please login to continue buying");
@@ -29,32 +30,44 @@ function UserAPI(token) {
         }
     };
 
-    const getUser = async () => {
-        try {
-            const res = await axios.get("./user/info", {
-                headers: { Authorization: token }
-            });
-
-            setIsLogged(true);
-            res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
-
-            setCart(res.data.cart);
-        }catch(err) {
-            alert(err.response.data.msg);
-        }
-    };
-
     useEffect(() => {
         if (token) {
+            const getUser = async () => {
+                try {
+                    const res = await axios.get("./user/info", {
+                        headers: { Authorization: token }
+                    });
+        
+                    setIsLogged(true);
+                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+        
+                    setCart(res.data.cart);
+                }catch(err) {
+                    alert(err.response.data.msg);
+                }
+            };
             getUser();
         }
     }, [token]);
+
+    useEffect(()=> {
+        if(token){
+            const getHistory = async () => {
+                const res = await axios.get('/user/history', {
+                    headers: {Authorization: token}
+                })
+                setHistory(res.data)
+            };
+            getHistory();
+        }
+    },[token])
 
     return {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         cart: [cart, setCart],
-        addCart: addCart
+        addCart: addCart,
+        history: [history, setHistory]
     };
 }
 

@@ -16,4 +16,6 @@ router.get('/info', authMiddle, userCtrl.getUser);
 
 router.patch('/add_cart', authMiddle, userCtrl.addCart)
 
+router.get('/history', authMiddle, userCtrl.history)
+
 module.exports = router;

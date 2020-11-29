@@ -35,7 +35,7 @@ export default function Register() {
                 <input
                     type="text"
                     name="name"
-                    require
+                    required
                     placeholder="Name"
                     value={user.name}
                     onChange={onChangeInput}
@@ -45,7 +45,7 @@ export default function Register() {
                 <input
                     type="email"
                     name="email"
-                    require
+                    required
                     placeholder="Email"
                     value={user.email}
                     onChange={onChangeInput}
@@ -55,7 +55,7 @@ export default function Register() {
                 <input
                     type="password"
                     name="password"
-                    require
+                    required
                     placeholder="Password"
                     value={user.password}
                     onChange={onChangeInput}
