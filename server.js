@@ -9,6 +9,7 @@ const userRouter = require('./routes/userRouter')
 const categoryRouter = require('./routes/categoryRouter')
 const uploadRouter = require('./routes/uploadRouter')
 const productRouter = require('./routes/productRouter')
+const paymentRouter = require('./routes/paymentRouter')
 
 const app = express()
 app.use(express.json())
@@ -22,6 +23,7 @@ app.use('/user', userRouter);
 app.use('/api', categoryRouter);
 app.use('/api', uploadRouter);
 app.use('/api', productRouter);
+app.use('/api', paymentRouter);
 
 //connect db
 const URI = process.env.MONGODB_URL;

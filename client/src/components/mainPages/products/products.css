@@ -1,6 +1,6 @@
 .products {
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* gap: 10px; */
@@ -81,4 +81,9 @@
 #btn_view{
     background-color: #00b8e2;
     margin-right: 5px;
+}
+.product_card input {
+    position: absolute;
+    width: 25px;
+    height: 25px;
 }

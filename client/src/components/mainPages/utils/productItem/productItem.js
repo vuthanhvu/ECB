@@ -1,11 +1,11 @@
 import React from "react";
-import {Link} from 'react-router-dom';
 
-import BtnRender from './btnRender';
+import BtnRender from "./btnRender";
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, isAdmin }) {
     return (
         <div className="product_card">
+            {isAdmin && <input type="checkbox" checked={product.checked} />}
             <div className="product_image">
                 <img src={product.images.url} alt="" />
             </div>
@@ -16,7 +16,7 @@ export default function ProductItem({ product }) {
                 <p>{product.description}</p>
             </div>
 
-            <BtnRender product={product}/>
+            <BtnRender product={product} />
         </div>
     );
 }

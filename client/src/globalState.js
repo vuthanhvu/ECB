@@ -3,6 +3,7 @@ import React, {createContext, useState, useEffect} from 'react';
 import axios from 'axios';
 
 import ProductsAPI from './api/productsAPI';
+import UserAPI from './api/userAPI';
 
 export const GlobalState = createContext();
 
@@ -11,7 +12,6 @@ export function DataProvider({children}) {
 
     const refreshToken = async () =>{
         const res = await axios.get('/user/refresh_token');
-        console.log(res);
         setToken(res.data.accessToken);
     }   
 
@@ -22,7 +22,8 @@ export function DataProvider({children}) {
 
     const state = {
         token: [token, setToken],
-        productsAPI: ProductsAPI()
+        productsAPI: ProductsAPI(),
+        userAPI: UserAPI(token)
     }
 
     return (

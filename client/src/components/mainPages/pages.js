@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Switch, Route } from "react-router-dom";
 
+import {GlobalState} from '../../globalState';
 import Products from './products/products';
 import DetailProduct from './detailProduct/detailProduct';
 import Carts from './carts/cart';
@@ -10,6 +11,8 @@ import NotFound from './utils/notFound/notFound';
 
 
 export default function MainPages() {
+    const state = useContext(GlobalState);
+    const [isLogged] = state.userAPI.isLogged;
     return (
         <Switch>
             <Route path="/" exact component={Products} />
@@ -17,10 +20,8 @@ export default function MainPages() {
             <Route path="/detail/:id" exact component={DetailProduct} />
 
             <Route path="/carts" exact component={Carts} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/register" exact component={Register} />
-
-
+            <Route path="/login" exact component={isLogged ? NotFound : Login} />
+            <Route path="/register" exact component={isLogged ? NotFound: Register} />
 
             <Route path="*" exact component={NotFound} />
         </Switch>

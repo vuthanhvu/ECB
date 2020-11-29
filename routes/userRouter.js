@@ -12,6 +12,8 @@ router.get("/logout", userCtrl.logout);
 
 router.get("/refresh_token", userCtrl.handleRefreshToken);
 
-router.get('/info', authMiddle, userCtrl.getUser)
+router.get('/info', authMiddle, userCtrl.getUser);
+
+router.patch('/add_cart', authMiddle, userCtrl.addCart)
 
 module.exports = router;

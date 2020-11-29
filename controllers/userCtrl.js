@@ -37,6 +37,7 @@ const userCtrl = {
             res.cookie("refreshToken", refreshToken, {
                 httpOnly: true,
                 path: "/user/refresh_token",
+                maxAge: 7*24*60*60*1000 // 7d
             });
 
             res.json({ accessToken });
@@ -62,7 +63,8 @@ const userCtrl = {
 
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                path:'/user/refresh_token'
+                path:'/user/refresh_token',
+                maxAge: 7*24*60*60*1000 // 7d
             });
 
             res.json({accessToken});
@@ -87,22 +89,15 @@ const userCtrl = {
                     .status(400)
                     .json({ msg: "Please login or register" });
 
-            jwt.verify(
-                rf_token,
-                process.env.REFRESH_TOKEN_SECRET,
-                (err, user) => {
+            jwt.verify(rf_token,process.env.REFRESH_TOKEN_SECRET,(err, user) => {
                     if (err)
-                        return res
-                            .status(400)
-                            .json({ msg: "Please login or register" });
+                        return res.status(400).json({ msg: "Please login or register" });
 
                     const accessToken = createAccessToken({ id: user.id });
 
                     res.json({ accessToken });
                 }
             );
-
-            res.json({ rf_token: rf_token });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
@@ -117,6 +112,21 @@ const userCtrl = {
 
         } catch (err) {
             return res.status(500).json({msg: err.message});
+        }
+    },
+    addCart: async (req, res) => {
+        try {
+            const user = await Users.findById(req.user.id);
+            if(!user) return res.status(400).json({msf: "User does not exits."})
+
+            await Users.findByIdAndUpdate({_id: req.user.id}, {
+                cart: req.body.cart
+            })
+
+            return res.json({msg: "Added to cart."})
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
         }
     }
 };
