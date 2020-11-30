@@ -9,6 +9,7 @@ export default function Carts() {
     const state = useContext(GlobalState);
     const [token] = state.token;
     const [cart, setCart] = state.userAPI.cart;
+
     const [total, setTotal] = useState(0);
 
 
@@ -69,7 +70,7 @@ export default function Carts() {
 
          setCart([]);
          addCart([]);
-         alert("You have successfully placed an order")
+         alert("You have successfully placed an order");
     }
 
     if (cart.length === 0)

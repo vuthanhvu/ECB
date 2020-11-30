@@ -16,7 +16,7 @@ const userCtrl = {
 
             if (password.length < 6) {
                 return res.status(400).json({
-                    msg: "The password is at least 6 characters long",
+                    msg: "The password is at least 6 characters long"
                 });
             }
 
@@ -25,7 +25,7 @@ const userCtrl = {
             const newUser = new Users({
                 name,
                 email,
-                password: passwordHash,
+                password: passwordHash
             });
 
             //save mongoDb
@@ -38,7 +38,7 @@ const userCtrl = {
             res.cookie("refreshToken", refreshToken, {
                 httpOnly: true,
                 path: "/user/refresh_token",
-                maxAge: 7*24*60*60*1000 // 7d
+                maxAge: 7 * 24 * 60 * 60 * 1000 // 7d
             });
 
             res.json({ accessToken });
@@ -50,7 +50,7 @@ const userCtrl = {
         try {
             const { email, password } = req.body;
 
-            const user = await Users.findOne({email});
+            const user = await Users.findOne({ email });
             if (!user)
                 return res.status(400).json({ msg: "User does not exits" });
 
@@ -59,27 +59,26 @@ const userCtrl = {
                 return res.status(400).json({ msg: "Incorrect password" });
 
             // create accessToken, refreshToken
-            const accessToken = createAccessToken({id: user.id});
-            const refreshToken = createRefreshToken({id: user.id});
+            const accessToken = createAccessToken({ id: user.id });
+            const refreshToken = createRefreshToken({ id: user.id });
 
-            res.cookie('refreshToken', refreshToken, {
+            res.cookie("refreshToken", refreshToken, {
                 httpOnly: true,
-                path:'/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7d
+                path: "/user/refresh_token",
+                maxAge: 7 * 24 * 60 * 60 * 1000 // 7d
             });
 
-            res.json({accessToken});
-
+            res.json({ accessToken });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
     },
     logout: async (req, res) => {
         try {
-            res.clearCookie('refreshToken', {path: '/user/refresh_token'});
-            return res.json({msg: 'Logged out'});
+            res.clearCookie("refreshToken", { path: "/user/refresh_token" });
+            return res.json({ msg: "Logged out" });
         } catch (err) {
-            return res.status(500).json({msg: err.message});
+            return res.status(500).json({ msg: err.message });
         }
     },
     handleRefreshToken: (req, res) => {
@@ -90,9 +89,14 @@ const userCtrl = {
                     .status(400)
                     .json({ msg: "Please login or register" });
 
-            jwt.verify(rf_token,process.env.REFRESH_TOKEN_SECRET,(err, user) => {
+            jwt.verify(
+                rf_token,
+                process.env.REFRESH_TOKEN_SECRET,
+                (err, user) => {
                     if (err)
-                        return res.status(400).json({ msg: "Please login or register" });
+                        return res
+                            .status(400)
+                            .json({ msg: "Please login or register" });
 
                     const accessToken = createAccessToken({ id: user.id });
 
@@ -105,50 +109,50 @@ const userCtrl = {
     },
     getUser: async (req, res) => {
         try {
-            const user = await Users.findById(req.user.id).select('-password');
-            if(!user)
-                return res.status(400).json({msg: 'USer does not exits'});
-            
-            res.json(user);
+            const user = await Users.findById(req.user.id).select("-password");
+            if (!user)
+                return res.status(400).json({ msg: "USer does not exits" });
 
+            res.json(user);
         } catch (err) {
-            return res.status(500).json({msg: err.message});
+            return res.status(500).json({ msg: err.message });
         }
     },
     addCart: async (req, res) => {
         try {
             const user = await Users.findById(req.user.id);
-            if(!user) return res.status(400).json({msf: "User does not exits."})
+            if (!user)
+                return res.status(400).json({ msf: "User does not exits." });
 
-            await Users.findByIdAndUpdate({_id: req.user.id}, {
-                cart: req.body.cart
-            })
+            await Users.findByIdAndUpdate(
+                { _id: req.user.id },
+                {
+                    cart: req.body.cart
+                }
+            );
 
-            return res.json({msg: "Added to cart."})
-
+            return res.json({ msg: "Added to cart." });
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({ msg: err.message });
         }
     },
     history: async (req, res) => {
         try {
-            const history = await Payments.find({user_id: req.user.id});
+            const history = await Payments.find({ user_id: req.user.id });
 
             res.json(history);
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({ msg: err.message });
         }
     }
 };
 
 const createAccessToken = (user) => {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "11m"});
 };
 
 const createRefreshToken = (user) => {
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {
-        expiresIn: "7d",
-    });
+    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "1d"});
 };
 
 module.exports = userCtrl;

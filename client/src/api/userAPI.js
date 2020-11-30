@@ -6,7 +6,7 @@ function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [cart, setCart] = useState([]);
-    const [history, setHistory] = useState([])
+    const [history, setHistory] = useState([]);
 
     const addCart = async (product) => {
         if (!isLogged) return alert("Please login to continue buying");
@@ -22,7 +22,7 @@ function UserAPI(token) {
                 "/user/add_cart",
                 { cart: [...cart, { ...product, quantity: 1 }] },
                 {
-                    headers: { Authorization: token }
+                    headers: { Authorization: token },
                 }
             );
         } else {
@@ -35,14 +35,14 @@ function UserAPI(token) {
             const getUser = async () => {
                 try {
                     const res = await axios.get("./user/info", {
-                        headers: { Authorization: token }
+                        headers: { Authorization: token },
                     });
-        
+
                     setIsLogged(true);
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
-        
+
                     setCart(res.data.cart);
-                }catch(err) {
+                } catch (err) {
                     alert(err.response.data.msg);
                 }
             };
@@ -50,24 +50,13 @@ function UserAPI(token) {
         }
     }, [token]);
 
-    useEffect(()=> {
-        if(token){
-            const getHistory = async () => {
-                const res = await axios.get('/user/history', {
-                    headers: {Authorization: token}
-                })
-                setHistory(res.data)
-            };
-            getHistory();
-        }
-    },[token])
 
     return {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         cart: [cart, setCart],
         addCart: addCart,
-        history: [history, setHistory]
+        history: [history, setHistory],
     };
 }
 

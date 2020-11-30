@@ -18,9 +18,6 @@ export default function Register() {
         e.preventDefault();
         try {
             await axios.post("/user/register", { ...user });
-
-            localStorage.setItem("firstLogin", true);
-
             window.location.href = "/products";
         } catch (err) {
             alert(err.response.data.msg);

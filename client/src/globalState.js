@@ -4,26 +4,32 @@ import axios from 'axios';
 
 import ProductsAPI from './api/productsAPI';
 import UserAPI from './api/userAPI';
+import CategoriesAPI from './api/categoriesAPI';
 
 export const GlobalState = createContext();
 
 export function DataProvider({children}) {
     const [token, setToken] = useState(false);
 
-    const refreshToken = async () =>{
-        const res = await axios.get('/user/refresh_token');
-        setToken(res.data.accessToken);
-    }   
+
 
     useEffect(() => {
-        const firstLogin = localStorage.getItem('firstLogin');
-        if(firstLogin) refreshToken();
+        const refreshToken = async () =>{
+            const res = await axios.get('/user/refresh_token');
+            setToken(res.data.accessToken);
+
+            setTimeout(() => {
+                refreshToken()
+            }, 10 * 60 * 1000 )
+        }   
+        refreshToken();
     }, [])
 
     const state = {
         token: [token, setToken],
         productsAPI: ProductsAPI(),
-        userAPI: UserAPI(token)
+        userAPI: UserAPI(token),
+        categoriesAPI: CategoriesAPI()
     }
 
     return (

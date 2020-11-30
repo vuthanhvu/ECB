@@ -8,7 +8,7 @@ import Close from "./icon/close.svg";
 import CartIcon from "./icon/cartIcon.svg";
 
 import "./header.css";
-import Axios from "axios";
+import axios from "axios";
 
 export default function Header() {
     const state = useContext(GlobalState);
@@ -17,8 +17,7 @@ export default function Header() {
     const [cart] = state.userAPI.cart;
 
     const logOutUser = async () => {
-        await Axios.get('/user/logout');
-        localStorage.clear();
+        await axios.get('/user/logout');
         window.location.href ="/";
 
     }

@@ -17,9 +17,6 @@ export default function Login() {
         e.preventDefault();
         try {
             await axios.post('/user/login', {...user});
-
-            localStorage.setItem('firstLogin', true);
-
             window.location.href="/products"
 
         } catch (err) {

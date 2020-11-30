@@ -48,3 +48,12 @@ button {
 
 /*-----------------------------Cart-----------------------------*/
 @import "./components/mainPages/carts/cart.css";
+
+/*----------------------------History---------------------------*/
+@import "./components/mainPages/history/orderHistory.css";
+
+/*----------------------------Categories-------------------------*/
+@import './components/mainPages/categories/categories.css';
+
+/*-----------------------------CreateProduct---------------------*/
+@import './components/mainPages/createProduct/createProduct.css';
