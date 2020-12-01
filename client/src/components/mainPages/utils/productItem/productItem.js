@@ -3,9 +3,7 @@ import React, {useState} from "react";
 import BtnRender from "./btnRender";
 import Loading from '../loading/loading';
 
-export default function ProductItem({ product, isAdmin, loading , deleteProduct, handleCheck }) {
-
-    if(loading) return <div className="product_card"><Loading /></div> 
+export default function ProductItem({ product, isAdmin , deleteProduct, handleCheck }) {
 
     return (
         <div className="product_card">

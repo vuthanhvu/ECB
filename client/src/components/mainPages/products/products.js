@@ -45,14 +45,24 @@ export default function Products() {
 
         setProducts([...products]);
     };
+
     const checkAll = () => {
         products.forEach(product => {
             product.checked = !isCheck;
         })
         setProducts([...products]);
         setIsCheck(!isCheck)
+    };
+
+    const deleteAll = () => {
+        products.forEach(product => {
+            if(product.checked){
+                deleteProduct(product._id, product.images.public_id);
+            }
+        })
     }
 
+    if(loading) return <div><Loading /></div> 
     return (
         <>
             {
@@ -60,7 +70,7 @@ export default function Products() {
                 <div className="delete_all">
                     <span>Select all</span>
                     <input type="checkbox" checked={isCheck} onChange={checkAll}/>
-                    <button>Delete all</button>
+                    <button onClick={deleteAll}>Delete all</button>
                 </div>
             }
             <div className="products">

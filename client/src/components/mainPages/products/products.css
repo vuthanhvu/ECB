@@ -9,7 +9,7 @@
     margin-top: 20px;
 
 }
-
+/*----------ProductItem------------------*/
 .product_card {
     max-width: 350px;
     width: 100%;
@@ -86,4 +86,27 @@
     position: absolute;
     width: 25px;
     height: 25px;
+}
+/*--------------DeleteAll-------------------*/
+.delete_all{
+    text-align: right;
+    margin: 20px;
+}
+.delete_all input{
+    height: 25px;
+    width: 25px;
+    transform: translateY(5px);
+    margin: 0 15px;
+}
+.delete_all span{
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #00b8e2;
+}
+.delete_all button{
+    border:  1px solid crimson;
+    padding: 10px 25px;
+    color: crimson;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 }
