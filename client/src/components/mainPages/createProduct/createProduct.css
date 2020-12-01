@@ -7,7 +7,7 @@
 }
 .upload{
     max-width: 450px;
-    height: 500px;
+    height: 550px;
     width: 100%;
     border: 1px solid #ddd;
     padding: 15px;
@@ -32,7 +32,7 @@
     font-size: 15rem;
     text-align: center;
     cursor: pointer;
-    margin: auto;
+    /* margin: auto; */
 }
 
 #file_img{

@@ -75,7 +75,7 @@ const userCtrl = {
     },
     logout: async (req, res) => {
         try {
-            res.clearCookie("refreshToken", { path: "/user/refresh_token" });
+            res.clearCookie("refreshToken", { path: '/user/refresh_token'});
             return res.json({ msg: "Logged out" });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
@@ -111,11 +111,11 @@ const userCtrl = {
         try {
             const user = await Users.findById(req.user.id).select("-password");
             if (!user)
-                return res.status(400).json({ msg: "USer does not exits" });
+                return res.status(400).json({msg: "USer does not exits" });
 
             res.json(user);
         } catch (err) {
-            return res.status(500).json({ msg: err.message });
+            return res.status(500).json({msg: err.message});
         }
     },
     addCart: async (req, res) => {
@@ -152,7 +152,7 @@ const createAccessToken = (user) => {
 };
 
 const createRefreshToken = (user) => {
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "1d"});
+    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "7d"});
 };
 
 module.exports = userCtrl;

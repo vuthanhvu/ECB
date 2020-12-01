@@ -19,8 +19,9 @@ function OrderDetailHistory() {
             });
         }
     }, [params.id, history]);
-    console.log(orderDetails);
-    if (orderDetails.length === 0) return null;
+
+
+    if (orderDetails.length === 0) return null; 
     return (
         <div className="history-page">
             <table>
