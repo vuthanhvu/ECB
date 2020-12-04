@@ -5,6 +5,8 @@ import axios from "axios";
 import { GlobalState } from "../../../globalState";
 import ProductItem from "../utils/productItem/productItem";
 import Loading from "../utils/loading/loading";
+import Filter from './filter';
+import LoadMore from './loadMore';
 
 export default function Products() {
     const state = useContext(GlobalState);
@@ -65,6 +67,8 @@ export default function Products() {
     if(loading) return <div><Loading /></div> 
     return (
         <>
+            <Filter />
+            
             {
                 isAdmin &&
                 <div className="delete_all">
@@ -87,6 +91,9 @@ export default function Products() {
                     );
                 })}
             </div>
+
+            <LoadMore />
+
             {products.length === 0 && <Loading />}
         </>
     );

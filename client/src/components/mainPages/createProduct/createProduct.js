@@ -47,7 +47,7 @@ function CreateProduct() {
             setProduct(initialState);
             setImages(false)
         }
-    },[param.id])
+    },[param.id, products])
 
     const handleUpload = async (e) => {
         e.preventDefault();

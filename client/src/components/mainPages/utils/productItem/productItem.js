@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
 import BtnRender from "./btnRender";
-import Loading from '../loading/loading';
 
 export default function ProductItem({ product, isAdmin , deleteProduct, handleCheck }) {
 
