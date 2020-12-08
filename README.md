@@ -1,4 +1,4 @@
-# MERN - Ecommerce-basic
+# MERN - ECB
 
 # 1. Start:
 ## - Install package: npm run install-all
