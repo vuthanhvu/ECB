@@ -27,16 +27,16 @@ app.use('/api', productRouter);
 app.use('/api', paymentRouter);
 
 //connect db
-const URI = process.env.MONGODB_URL;
-mongoose.connect(URI, {
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-}, err => {
-    if(err) throw err;
-    console.log('Connect to MongoDB successfully !!!')
-})
+// const URI = process.env.MONGODB_URL;
+// mongoose.connect(URI, {
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true
+// }, err => {
+//     if(err) throw err;
+//     console.log('Connect to MongoDB successfully !!!')
+// })
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('/client/build'));
