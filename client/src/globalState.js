@@ -2,9 +2,9 @@ import React, {createContext, useState, useEffect} from 'react';
 
 import axios from 'axios';
 
-import ProductsAPI from './api/productsAPI';
-import UserAPI from './api/userAPI';
-import CategoriesAPI from './api/categoriesAPI';
+import ProductsAPI from './service/productsAPI';
+import UserAPI from './service/userAPI';
+import CategoriesAPI from './service/categoriesAPI';
 
 export const GlobalState = createContext();
 
