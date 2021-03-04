@@ -1,5 +1,10 @@
 # MERN - ECB
 
+#Demo
+## https://vtp-ecommerce-basic.herokuapp.com/
+## admin: admin@gmail.com - Pass: 123456
+## user: userdemo1@gmail.com - Pass: 123456 
+
 # 1. Start:
 ## - Install package: npm run install-all
 ## - Run project: npm run dev
